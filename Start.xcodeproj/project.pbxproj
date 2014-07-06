@@ -30,6 +30,11 @@
 		57E7F2BC19666132007564BB /* StoreKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57E7F2BB19666132007564BB /* StoreKit.framework */; };
 		57E7F2BE19666149007564BB /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57E7F2BD19666149007564BB /* SystemConfiguration.framework */; };
 		57E7F2C0196665CE007564BB /* FacebookSDK.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57E7F2BF196665CE007564BB /* FacebookSDK.framework */; };
+		57E7F2C4196679E5007564BB /* Social.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 57E7F2C3196679E5007564BB /* Social.framework */; };
+		57E7F2C71968C7F7007564BB /* Goal.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E7F2C61968C7F7007564BB /* Goal.m */; };
+		57E7F2CA1968D19B007564BB /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E7F2C91968D19B007564BB /* User.m */; };
+		57E7F2CD1968D225007564BB /* GoalBuddies.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E7F2CC1968D225007564BB /* GoalBuddies.m */; };
+		57E7F2D01968D59F007564BB /* GoalEntry.m in Sources */ = {isa = PBXBuildFile; fileRef = 57E7F2CF1968D59F007564BB /* GoalEntry.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -70,6 +75,15 @@
 		57E7F2BB19666132007564BB /* StoreKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = StoreKit.framework; path = System/Library/Frameworks/StoreKit.framework; sourceTree = SDKROOT; };
 		57E7F2BD19666149007564BB /* SystemConfiguration.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = SystemConfiguration.framework; path = System/Library/Frameworks/SystemConfiguration.framework; sourceTree = SDKROOT; };
 		57E7F2BF196665CE007564BB /* FacebookSDK.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; path = FacebookSDK.framework; sourceTree = "<group>"; };
+		57E7F2C3196679E5007564BB /* Social.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Social.framework; path = System/Library/Frameworks/Social.framework; sourceTree = SDKROOT; };
+		57E7F2C51968C7F7007564BB /* Goal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Goal.h; sourceTree = "<group>"; };
+		57E7F2C61968C7F7007564BB /* Goal.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Goal.m; sourceTree = "<group>"; };
+		57E7F2C81968D19B007564BB /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
+		57E7F2C91968D19B007564BB /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
+		57E7F2CB1968D225007564BB /* GoalBuddies.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoalBuddies.h; sourceTree = "<group>"; };
+		57E7F2CC1968D225007564BB /* GoalBuddies.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoalBuddies.m; sourceTree = "<group>"; };
+		57E7F2CE1968D59F007564BB /* GoalEntry.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoalEntry.h; sourceTree = "<group>"; };
+		57E7F2CF1968D59F007564BB /* GoalEntry.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoalEntry.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -77,6 +91,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57E7F2C4196679E5007564BB /* Social.framework in Frameworks */,
 				57E7F2BE19666149007564BB /* SystemConfiguration.framework in Frameworks */,
 				57E7F2BC19666132007564BB /* StoreKit.framework in Frameworks */,
 				57E7F2BA19666126007564BB /* Security.framework in Frameworks */,
@@ -129,6 +144,7 @@
 		5789CC6919647FDE0084BA6B /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				57E7F2C3196679E5007564BB /* Social.framework */,
 				57E7F2BF196665CE007564BB /* FacebookSDK.framework */,
 				57E7F2BD19666149007564BB /* SystemConfiguration.framework */,
 				57E7F2BB19666132007564BB /* StoreKit.framework */,
@@ -153,6 +169,14 @@
 			children = (
 				5789CC7919647FDE0084BA6B /* WBAppDelegate.h */,
 				5789CC7A19647FDE0084BA6B /* WBAppDelegate.m */,
+				57E7F2C51968C7F7007564BB /* Goal.h */,
+				57E7F2C61968C7F7007564BB /* Goal.m */,
+				57E7F2CE1968D59F007564BB /* GoalEntry.h */,
+				57E7F2CF1968D59F007564BB /* GoalEntry.m */,
+				57E7F2C81968D19B007564BB /* User.h */,
+				57E7F2C91968D19B007564BB /* User.m */,
+				57E7F2CB1968D225007564BB /* GoalBuddies.h */,
+				57E7F2CC1968D225007564BB /* GoalBuddies.m */,
 				5789CC7C19647FDE0084BA6B /* Images.xcassets */,
 				5789CC7119647FDE0084BA6B /* Supporting Files */,
 			);
@@ -284,6 +308,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				57E7F2CA1968D19B007564BB /* User.m in Sources */,
+				57E7F2C71968C7F7007564BB /* Goal.m in Sources */,
+				57E7F2CD1968D225007564BB /* GoalBuddies.m in Sources */,
+				57E7F2D01968D59F007564BB /* GoalEntry.m in Sources */,
 				5789CC7719647FDE0084BA6B /* main.m in Sources */,
 				5789CC7B19647FDE0084BA6B /* WBAppDelegate.m in Sources */,
 			);

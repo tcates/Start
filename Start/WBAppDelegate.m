@@ -28,9 +28,12 @@
     
     [PFFacebookUtils initializeFacebook];
     
-    PFObject *testObject = [PFObject objectWithClassName:@"TestObject"];
-    testObject[@"foo"] = @"baz";
-    [testObject saveInBackground];
+    UIViewController *controller = [UIViewController new];
+    self.window.rootViewController = controller;
+
+    PFLogInViewController *loginController = [PFLogInViewController new];
+    loginController.fields = PFLogInFieldsFacebook | PFLogInFieldsTwitter | PFLogInFieldsDefault;
+    [controller presentViewController:loginController animated:YES completion:NULL];
     
     return YES;
 }
