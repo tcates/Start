@@ -7,12 +7,12 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Parse/Parse.h>
 
 @class User;
 @class GoalBuddies;
 
-@interface Goal : NSObject
-
+@interface Goal : PFObject<PFSubclassing>
 /*
  * Values stored in Parse for Goal objects
  */
@@ -30,5 +30,7 @@
 
 // an array of hearts
 // an array of comments
+
++ (NSString *)parseClassName;
 
 @end

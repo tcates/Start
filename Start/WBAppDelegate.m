@@ -7,11 +7,13 @@
 //
 
 #import "WBAppDelegate.h"
+#import "User.h"
+#import "Goal.h"
+#import "GoalEntry.h"
+#import "GoalBuddies.h"
 #import <Parse/Parse.h>
 
 @implementation WBAppDelegate
-
-
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -20,9 +22,13 @@
     self.window.backgroundColor = [UIColor redColor];
     [self.window makeKeyAndVisible];
     
-    
+    [Goal registerSubclass];
+    [GoalEntry registerSubclass];
+    [User registerSubclass];
+    [GoalBuddies registerSubclass];
+
     [Parse setApplicationId:@"R9PwbTiaZksYBGzL8vBcDyXrEpNrGtaFITzZKM5D"
-                  clientKey:@"daWysRh8ThSt3pkGfBDsVJ1O7soK1CaFC2JwxTvM"];
+        clientKey:@"daWysRh8ThSt3pkGfBDsVJ1O7soK1CaFC2JwxTvM"];
     
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
@@ -32,7 +38,16 @@
     self.window.rootViewController = controller;
 
     PFLogInViewController *loginController = [PFLogInViewController new];
-    loginController.fields = PFLogInFieldsFacebook | PFLogInFieldsTwitter | PFLogInFieldsDefault;
+    loginController.fields = PFLogInFieldsFacebook | PFLogInFieldsTwitter | PFLogInFieldsUsernameAndPassword | PFLogInFieldsLogInButton | PFLogInFieldsSignUpButton | PFLogInFieldsPasswordForgotten;
+
+    UILabel *logo = [UILabel new];
+    logo.text = @"Start";
+    logo.textColor = [UIColor whiteColor];
+    logo.font = [UIFont systemFontOfSize:25];
+//    NSLog(@"%@", logo.font);
+    [logo sizeToFit];
+    loginController.logInView.logo = logo;
+    
     [controller presentViewController:loginController animated:YES completion:NULL];
     
     return YES;

@@ -7,16 +7,19 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Parse/Parse.h>
 
 @class Goal;
 @class User;
 
-@interface GoalEntry : NSObject
+@interface GoalEntry : PFObject<PFSubclassing>
 
-@property (strong, nonatomic) NSString *objectId;
 @property (strong, nonatomic) NSString *description; // optional
+@property (nonatomic) NSInteger customCount;
 @property (strong, nonatomic) NSDate *date;
 @property (strong, nonatomic) Goal *goal;
 @property (strong, nonatomic) User *user;
+
++ (NSString *)parseClassName;
 
 @end

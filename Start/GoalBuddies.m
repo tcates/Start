@@ -7,7 +7,15 @@
 //
 
 #import "GoalBuddies.h"
+#import <Parse/PFObject+Subclass.h>
 
 @implementation GoalBuddies
+
+@dynamic name;
+@synthesize buds;
+
++ (NSString *)parseClassName {
+    return @"GoalBuddies";
+}
 
 @end

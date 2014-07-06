@@ -7,7 +7,14 @@
 //
 
 #import "User.h"
+#import <Parse/PFObject+Subclass.h>
 
 @implementation User
 
+@dynamic name;
+@dynamic email; // optional
+
++ (NSString *)parseClassName {
+    return @"User";
+}
 @end

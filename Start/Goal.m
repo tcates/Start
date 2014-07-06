@@ -7,7 +7,19 @@
 //
 
 #import "Goal.h"
+#import <Parse/PFObject+Subclass.h>
 
 @implementation Goal
 
+@dynamic title;
+@dynamic startDate;
+@dynamic numDays;
+@dynamic customUnits;
+@dynamic categoryId;
+@synthesize buddies;
+@synthesize user;
+
++ (NSString *)parseClassName {
+    return @"Goal";
+}
 @end

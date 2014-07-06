@@ -7,7 +7,17 @@
 //
 
 #import "GoalEntry.h"
+#import <Parse/PFObject+Subclass.h>
 
 @implementation GoalEntry
 
+@dynamic description; // optional
+@dynamic date;
+@dynamic customCount;
+@synthesize goal;
+@synthesize user;
+
++ (NSString *)parseClassName {
+    return @"GoalEntry";
+}
 @end

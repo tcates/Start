@@ -7,11 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import <Parse/Parse.h>
 
-@interface GoalBuddies : NSObject
+@interface GoalBuddies : PFObject<PFSubclassing>
 
 @property (strong, nonatomic) NSString *name;
-@property (strong, nonatomic) NSString *objectId;
 @property (strong, nonatomic) NSArray /* User */ *buds;
+
++ (NSString *)parseClassName;
 
 @end
