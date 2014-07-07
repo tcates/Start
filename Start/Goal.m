@@ -22,4 +22,15 @@
 + (NSString *)parseClassName {
     return @"Goal";
 }
+
+- (instancetype)initWithTitle:(NSString *)title
+{
+    self = [super init];
+    
+    if (self != nil) {
+        self.title = title;
+    }
+    
+    return self;
+}
 @end

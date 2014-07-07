@@ -28,6 +28,8 @@
 // health, relationships, etc.
 @property (strong, nonatomic) NSString *categoryId;
 
+- (instancetype)initWithTitle:(NSString *)title;
+
 // an array of hearts
 // an array of comments
 

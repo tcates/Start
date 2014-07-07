@@ -8,11 +8,11 @@
 
 #import <UIKit/UIKit.h>
 
-#import "WBAppDelegate.h"
+#import "StartAppDelegate.h"
 
 int main(int argc, char * argv[])
 {
     @autoreleasepool {
-        return UIApplicationMain(argc, argv, nil, NSStringFromClass([WBAppDelegate class]));
+        return UIApplicationMain(argc, argv, nil, NSStringFromClass([StartAppDelegate class]));
     }
 }

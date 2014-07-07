@@ -9,12 +9,12 @@
 #import <Foundation/Foundation.h>
 #import <Parse/Parse.h>
 
-@interface User : PFObject<PFSubclassing>
+@interface User : PFUser<PFSubclassing>
 
 @property (strong, nonatomic) NSString *name;
 @property (strong, nonatomic) NSString *email; // optional
+@property (strong, nonatomic) NSArray *goals;
 //@property (strong, nonatomic) NSArray /* User */ *posse;
 
-+ (NSString *)parseClassName;
 
 @end

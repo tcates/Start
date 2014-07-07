@@ -1,19 +1,50 @@
 //
-//  WBAppDelegate.m
+//  StartAppDelegate.m
 //  Start
 //
 //  Created by Tara Cates on 7/2/14.
 //  Copyright (c) 2014 Tara Cates. All rights reserved.
 //
 
-#import "WBAppDelegate.h"
+#import "StartAppDelegate.h"
 #import "User.h"
 #import "Goal.h"
 #import "GoalEntry.h"
 #import "GoalBuddies.h"
+#import "GoalMonthTableViewController.h"
 #import <Parse/Parse.h>
 
-@implementation WBAppDelegate
+@implementation StartAppDelegate {
+    GoalMonthTableViewController *_goalMonthTableViewController;
+}
+
+- (void)_parseInit
+{
+    [Goal registerSubclass];
+    [GoalEntry registerSubclass];
+    [User registerSubclass];
+    [GoalBuddies registerSubclass];
+    
+    [Parse setApplicationId:@"R9PwbTiaZksYBGzL8vBcDyXrEpNrGtaFITzZKM5D"
+                  clientKey:@"daWysRh8ThSt3pkGfBDsVJ1O7soK1CaFC2JwxTvM"];
+    [PFFacebookUtils initializeFacebook];
+}
+
+- (void)_displayLoginViewController
+{
+    PFLogInViewController *loginController = [PFLogInViewController new];
+    loginController.fields = PFLogInFieldsFacebook | PFLogInFieldsTwitter | PFLogInFieldsUsernameAndPassword | PFLogInFieldsLogInButton | PFLogInFieldsSignUpButton | PFLogInFieldsPasswordForgotten;
+    
+    UILabel *logo = [UILabel new];
+    logo.text = @"Start";
+    logo.textColor = [UIColor whiteColor];
+    logo.font = [UIFont systemFontOfSize:25];
+    //    NSLog(@"%@", logo.font);
+    [logo sizeToFit];
+    loginController.logInView.logo = logo;
+    
+    [self.window.rootViewController presentViewController:loginController animated:YES completion:NULL];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -22,33 +53,21 @@
     self.window.backgroundColor = [UIColor redColor];
     [self.window makeKeyAndVisible];
     
-    [Goal registerSubclass];
-    [GoalEntry registerSubclass];
-    [User registerSubclass];
-    [GoalBuddies registerSubclass];
-
-    [Parse setApplicationId:@"R9PwbTiaZksYBGzL8vBcDyXrEpNrGtaFITzZKM5D"
-        clientKey:@"daWysRh8ThSt3pkGfBDsVJ1O7soK1CaFC2JwxTvM"];
-    
+    [self _parseInit];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
-    [PFFacebookUtils initializeFacebook];
+    UINavigationController *controller = [UINavigationController new];
+    _goalMonthTableViewController = [GoalMonthTableViewController new];
     
-    UIViewController *controller = [UIViewController new];
+    [controller pushViewController:_goalMonthTableViewController animated:NO];
     self.window.rootViewController = controller;
-
-    PFLogInViewController *loginController = [PFLogInViewController new];
-    loginController.fields = PFLogInFieldsFacebook | PFLogInFieldsTwitter | PFLogInFieldsUsernameAndPassword | PFLogInFieldsLogInButton | PFLogInFieldsSignUpButton | PFLogInFieldsPasswordForgotten;
-
-    UILabel *logo = [UILabel new];
-    logo.text = @"Start";
-    logo.textColor = [UIColor whiteColor];
-    logo.font = [UIFont systemFontOfSize:25];
-//    NSLog(@"%@", logo.font);
-    [logo sizeToFit];
-    loginController.logInView.logo = logo;
     
-    [controller presentViewController:loginController animated:YES completion:NULL];
+    User *user = [User currentUser];
+    if (user == nil) {
+        [self _displayLoginViewController];
+    } else {
+        _goalMonthTableViewController.user = user;
+    }
     
     return YES;
 }

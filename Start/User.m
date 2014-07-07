@@ -6,15 +6,25 @@
 //  Copyright (c) 2014 Tara Cates. All rights reserved.
 //
 
-#import "User.h"
+
 #import <Parse/PFObject+Subclass.h>
+
+#import "Goal.h"
+#import "User.h"
 
 @implementation User
 
 @dynamic name;
 @dynamic email; // optional
+@synthesize goals;
 
-+ (NSString *)parseClassName {
-    return @"User";
+-(NSArray *)goals
+{
+    return @[
+             [[Goal alloc] initWithTitle:@"Foo"],
+             [[Goal alloc] initWithTitle:@"Bar"],
+             [[Goal alloc] initWithTitle:@"Baz"],
+             ];
 }
+
 @end

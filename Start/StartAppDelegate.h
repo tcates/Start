@@ -1,5 +1,5 @@
 //
-//  WBAppDelegate.h
+//  StartAppDelegate.h
 //  Start
 //
 //  Created by Tara Cates on 7/2/14.
@@ -8,7 +8,7 @@
 
 #import <UIKit/UIKit.h>
 
-@interface WBAppDelegate : UIResponder <UIApplicationDelegate>
+@interface StartAppDelegate : UIResponder <UIApplicationDelegate>
 
 @property (strong, nonatomic) UIWindow *window;
 
