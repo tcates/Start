@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		577F649F196C7DEC00DB0FF6 /* GoalCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 577F649E196C7DEC00DB0FF6 /* GoalCreationViewController.m */; };
 		5789CC6B19647FDE0084BA6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5789CC6A19647FDE0084BA6B /* Foundation.framework */; };
 		5789CC6D19647FDE0084BA6B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5789CC6C19647FDE0084BA6B /* CoreGraphics.framework */; };
 		5789CC6F19647FDE0084BA6B /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5789CC6E19647FDE0084BA6B /* UIKit.framework */; };
@@ -49,6 +50,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		577F649D196C7DEC00DB0FF6 /* GoalCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoalCreationViewController.h; sourceTree = "<group>"; };
+		577F649E196C7DEC00DB0FF6 /* GoalCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoalCreationViewController.m; sourceTree = "<group>"; };
 		5789CC6719647FDE0084BA6B /* Start.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Start.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5789CC6A19647FDE0084BA6B /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
 		5789CC6C19647FDE0084BA6B /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
@@ -174,6 +177,8 @@
 				5789CC7A19647FDE0084BA6B /* StartAppDelegate.m */,
 				57CB4A38196A3ED70026E695 /* GoalMonthTableViewController.h */,
 				57CB4A39196A3ED70026E695 /* GoalMonthTableViewController.m */,
+				577F649D196C7DEC00DB0FF6 /* GoalCreationViewController.h */,
+				577F649E196C7DEC00DB0FF6 /* GoalCreationViewController.m */,
 				57E7F2C51968C7F7007564BB /* Goal.h */,
 				57E7F2C61968C7F7007564BB /* Goal.m */,
 				57E7F2CE1968D59F007564BB /* GoalEntry.h */,
@@ -319,6 +324,7 @@
 				57E7F2D01968D59F007564BB /* GoalEntry.m in Sources */,
 				5789CC7719647FDE0084BA6B /* main.m in Sources */,
 				57CB4A3A196A3ED70026E695 /* GoalMonthTableViewController.m in Sources */,
+				577F649F196C7DEC00DB0FF6 /* GoalCreationViewController.m in Sources */,
 				5789CC7B19647FDE0084BA6B /* StartAppDelegate.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

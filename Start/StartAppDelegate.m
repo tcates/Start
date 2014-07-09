@@ -12,10 +12,12 @@
 #import "GoalEntry.h"
 #import "GoalBuddies.h"
 #import "GoalMonthTableViewController.h"
+#import "GoalCreationViewController.h"
 #import <Parse/Parse.h>
 
 @implementation StartAppDelegate {
     GoalMonthTableViewController *_goalMonthTableViewController;
+    GoalCreationViewController *_goalCreationViewController;
 }
 
 - (void)_parseInit
@@ -50,23 +52,25 @@
 {
     self.window = [[UIWindow alloc] initWithFrame:[[UIScreen mainScreen] bounds]];
     // Override point for customization after application launch.
-    self.window.backgroundColor = [UIColor redColor];
+    self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
     [self _parseInit];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     UINavigationController *controller = [UINavigationController new];
+    _goalCreationViewController = [GoalCreationViewController new];
     _goalMonthTableViewController = [GoalMonthTableViewController new];
     
-    [controller pushViewController:_goalMonthTableViewController animated:NO];
+    //[controller pushViewController:_goalMonthTableViewController animated:NO];
+    [controller pushViewController:_goalCreationViewController animated:NO];
     self.window.rootViewController = controller;
     
     User *user = [User currentUser];
     if (user == nil) {
         [self _displayLoginViewController];
     } else {
-        _goalMonthTableViewController.user = user;
+       // _goalMonthTableViewController.user = user;
     }
     
     return YES;
