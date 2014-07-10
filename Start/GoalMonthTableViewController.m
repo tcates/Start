@@ -24,7 +24,8 @@
     if (self) {
         // this call says which class type to return when using the id GoalMonthCellIdentifier
         [self.tableView registerClass:[GoalMonthTableViewCell class] forCellReuseIdentifier:@"GoalMonthCellIdentifier"];
-
+        self.tabBarItem.image = [UIImage imageNamed:@"second.png"];
+        self.title = @"Second Tab";
     }
     return self;
 }

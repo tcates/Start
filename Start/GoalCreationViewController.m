@@ -9,104 +9,81 @@
 #import "GoalCreationViewController.h"
 #import <QuartzCore/QuartzCore.h>
 
-@interface GoalCreationViewController ()
-
+@interface MultiPlaceholderTextField : UIView
+- (instancetype)initWithPlaceholders:(NSArray *)/* NSString */ placeholders;
+@property UITextField *textField;
 @end
 
-@implementation GoalCreationViewController 
+@implementation GoalCreationViewController {
+    UITextField *_goal;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        self.title = @"First Tab";
+        self.tabBarItem.image = [UIImage imageNamed:@"first.png"];
     }
     return self;
+}
+
+- (UILabel *)_newLabelWithString:(NSString *)string
+{
+    UILabel *label = [UILabel new];
+    label.translatesAutoresizingMaskIntoConstraints = NO;
+    label.numberOfLines = 0;
+    label.text = string;
+    [self.view addSubview:label];
+    
+    return label;
 }
 
 - (void)viewDidLoad
 {
     [super viewDidLoad];
     
+    UILabel *categoryLabel = [self _newLabelWithString:@"What area in your life would you like to focus on?"];
+    MultiPlaceholderTextField *category = [[MultiPlaceholderTextField alloc] initWithPlaceholders:@[@"mind", @"body", @"spirit"]];
+    [self.view addSubview:category];
     
-    UILabel *categoryLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 50, 300, 80)];
-    categoryLabel.text = @"What area in your life would you like to focus on?";
-    categoryLabel.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.0];
-    categoryLabel.numberOfLines = 2;
+    UILabel *goalLabel = [self _newLabelWithString:@"What will you do everyday to better that area of life?"];
+    MultiPlaceholderTextField *goal = [[MultiPlaceholderTextField alloc] initWithPlaceholders:@[@"read", @"exercise", @"journal"]];
+    [self.view addSubview:goal];
     
-    UITextField *category = [[UITextField alloc] initWithFrame:CGRectMake(10, 120, 300, 40)];
+    UILabel *unitLabel = [self _newLabelWithString:@"Is this goal measureable? What is it measured by?"];
+    MultiPlaceholderTextField *unit = [[MultiPlaceholderTextField alloc] initWithPlaceholders:@[@"pages", @"miles", @"words"]];
+    [self.view addSubview:unit];
     
-    category.borderStyle = UITextBorderStyleRoundedRect;
-    category.placeholder = @"category, e.g. health, love, etc.";
-    category.clearButtonMode = UITextFieldViewModeWhileEditing;
-    category.returnKeyType = UIReturnKeyDefault;
-    category.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    category.autocapitalizationType = NO;
-   // category.leftViewMode = UITextFieldViewModeAlways;
-   // category.leftView = label;
-    category.delegate = self;
+    NSDictionary *views = NSDictionaryOfVariableBindings(categoryLabel, category, goalLabel, goal, unitLabel, unit);
+    NSDictionary *metrics = @{
+                              @"topPadding": @(10.0),
+                              @"lPadding": @(10.0),
+                              @"rPadding": @(10.0),
+                              };
     
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|-(lPadding)-[categoryLabel]-(rPadding)-|"
+                                                                          options:0
+                                                                          metrics:metrics
+                                                                            views:views]];
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(topPadding)-[categoryLabel]-[category]-[goalLabel]-[goal]-[unitLabel]-[unit]"
+                                                                          options:NSLayoutFormatAlignAllLeading | NSLayoutFormatAlignAllTrailing
+                                                                          metrics:metrics
+                                                                            views:views]];
     
-    UILabel *goalLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 160, 300, 80)];
-    goalLabel.text = @"What will you do everyday to better that area of life?";
-    goalLabel.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.0];
-    goalLabel.numberOfLines = 2;
-    
-    UITextField *goal = [[UITextField alloc] initWithFrame:CGRectMake(10, 230, 300, 40)];
-    
-    goal.borderStyle = UITextBorderStyleRoundedRect;
-    goal.placeholder = @"measureable goal, e.g. exercise, floss, journal gratitudes.";//code here for suggestions?
-    goal.clearButtonMode = UITextFieldViewModeWhileEditing;
-    goal.returnKeyType = UIReturnKeyDefault;
-    goal.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    category.autocapitalizationType = NO;
-    goal.delegate = self;
-    
-    UILabel *unitLabel = [[UILabel alloc] initWithFrame:CGRectMake(10, 270, 300, 80)];
-    unitLabel.text = @"Is this goal measureable? What is it measured by?";
-    unitLabel.backgroundColor = [UIColor colorWithWhite:0.0 alpha:0.0];
-    unitLabel.numberOfLines = 2;
-    
-    
-    UITextField *unit = [[UITextField alloc] initWithFrame:CGRectMake(10, 340, 300, 40)];
-    
-    unit.borderStyle = UITextBorderStyleRoundedRect;
-    unit.placeholder = @"measurement by, e.g. pages, miles, minutes";//code here for suggestions?
-    unit.clearButtonMode = UITextFieldViewModeWhileEditing;
-    unit.returnKeyType = UIReturnKeyDefault;
-    unit.contentVerticalAlignment = UIControlContentVerticalAlignmentCenter;
-    category.autocapitalizationType = NO;
-    unit.delegate = self;
-    
-    //habituate!
-    
-    UIButton *habituateButton = [UIButton buttonWithType:UIButtonTypeRoundedRect];
-    [habituateButton.layer setBorderWidth:1.0f];
-    [habituateButton.layer setBorderColor:[UIColor redColor].CGColor];
-    [habituateButton.layer setCornerRadius:10.0f];
-    
-    habituateButton.frame = CGRectMake(100, 390, 100, 30);
-    
-    [habituateButton setTitle:@"Habituate!" forState:UIControlStateNormal];
-
-    
-    UIView *containerView = [UIView new];
-    containerView.autoresizesSubviews = YES;
-
-    [containerView addSubview:category];
-    [containerView addSubview:categoryLabel];
-    [containerView addSubview:goal];
-    [containerView addSubview:goalLabel];
-    [containerView addSubview:unit];
-    [containerView addSubview:unitLabel];
-    [containerView addSubview:habituateButton];
-    
-    
-    [self setView:containerView];
     // Do any additional setup after loading the view.
-    
-    
-    
+    self.parentViewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel target:self action:@selector(_cancelButtonPressed)];
+    self.parentViewController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"Habituate!" style:UIBarButtonItemStyleDone target:self action:@selector(_doneButtonPressed)];
+}
+
+- (void)_cancelButtonPressed
+{
+    NSLog(@"cancel button pressed");
+}
+
+- (void)_doneButtonPressed
+{
+    NSLog(@"done button pressed");
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
@@ -141,5 +118,124 @@
     // Pass the selected object to the new view controller.
 }
 */
+
+@end
+
+@interface MultiPlaceholderTextField ()  <UITextFieldDelegate>
+
+@end
+
+@implementation MultiPlaceholderTextField {
+    UITextField *_placeholderTextField;
+    NSArray *_placeholders;
+    NSUInteger _currentPlaceholder;
+}
+
+static NSMutableSet *s_instances;
+
++ (void)initialize
+{
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        s_instances = [NSMutableSet new];
+        
+        dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+            [self _updatePlaceholder];
+        });
+    });
+}
+
++ (void)_updatePlaceholder
+{
+    [UIView animateWithDuration:1.0
+                     animations:^{
+                         [s_instances enumerateObjectsUsingBlock:^(MultiPlaceholderTextField *instance, BOOL *stop) {
+                             instance->_placeholderTextField.alpha = 0.0;
+                         }];
+                     }
+                     completion:^(BOOL finished) {
+                         [s_instances enumerateObjectsUsingBlock:^(MultiPlaceholderTextField *instance, BOOL *stop) {
+                             instance->_placeholderTextField.placeholder = instance->_placeholders[++instance->_currentPlaceholder % instance->_placeholders.count];
+                         }];
+                         [UIView animateWithDuration:1.0
+                                          animations:^{
+                                              [s_instances enumerateObjectsUsingBlock:^(MultiPlaceholderTextField *instance, BOOL *stop) {
+                                                  instance->_placeholderTextField.alpha = 1.0;
+                                              }];
+                                          }
+                                          completion:^(BOOL finished) {
+                                              dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(2.0 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+                                                  [self _updatePlaceholder];
+                                              });
+                                          }];
+                     }];
+}
+
+- (instancetype)initWithPlaceholders:(NSArray *)placeholders
+{
+    self = [self init];
+    
+    if (self != nil) {
+        self.translatesAutoresizingMaskIntoConstraints = NO;
+        
+        _placeholders = placeholders;
+        _currentPlaceholder = 0;
+        
+        _placeholderTextField = [UITextField new];
+        _placeholderTextField.translatesAutoresizingMaskIntoConstraints = NO;
+        _placeholderTextField.borderStyle = UITextBorderStyleRoundedRect;
+        _placeholderTextField.placeholder = placeholders[_currentPlaceholder];
+        [self addSubview:_placeholderTextField];
+        
+        _textField = [UITextField new];
+        _textField.backgroundColor = [UIColor clearColor];
+        _textField.translatesAutoresizingMaskIntoConstraints = NO;
+        _textField.borderStyle = UITextBorderStyleRoundedRect;
+        _textField.clearButtonMode = UITextFieldViewModeWhileEditing;
+        _textField.returnKeyType = UIReturnKeyDefault;
+        _textField.autocapitalizationType = NO;
+        _textField.delegate = self;
+        [self addSubview:_textField];
+        
+        NSDictionary *views = NSDictionaryOfVariableBindings(_placeholderTextField, _textField);
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_placeholderTextField]|"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:views]];
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"H:|[_textField]|"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:views]];
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_placeholderTextField]|"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:views]];
+        [self addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|[_textField]|"
+                                                                     options:0
+                                                                     metrics:nil
+                                                                       views:views]];
+        
+        [s_instances addObject:self];
+    }
+    
+    return  self;
+}
+
+- (void)dealloc
+{
+    [s_instances removeObject:self];
+}
+
+- (void)textFieldDidBeginEditing:(UITextField *)textField
+{
+    _placeholderTextField.hidden = YES;
+}
+
+- (void)textFieldDidEndEditing:(UITextField *)textField
+{
+    if (_textField.text.length == 0) {
+        _placeholderTextField.hidden = NO;
+    }
+}
 
 @end

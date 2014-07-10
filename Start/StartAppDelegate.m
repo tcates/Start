@@ -13,11 +13,13 @@
 #import "GoalBuddies.h"
 #import "GoalMonthTableViewController.h"
 #import "GoalCreationViewController.h"
+#import "MainTabBarViewController.h"
 #import <Parse/Parse.h>
 
 @implementation StartAppDelegate {
     GoalMonthTableViewController *_goalMonthTableViewController;
     GoalCreationViewController *_goalCreationViewController;
+    MainTabBarViewController *_mainTabBarViewController;
 }
 
 - (void)_parseInit
@@ -59,20 +61,25 @@
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
     UINavigationController *controller = [UINavigationController new];
+    controller.navigationBar.translucent = NO;
+    
+    _mainTabBarViewController = [MainTabBarViewController new];
     _goalCreationViewController = [GoalCreationViewController new];
     _goalMonthTableViewController = [GoalMonthTableViewController new];
+    NSArray *goalControllers = [NSArray arrayWithObjects:_goalCreationViewController, _goalMonthTableViewController, nil];
+    _mainTabBarViewController.viewControllers = goalControllers;
     
     //[controller pushViewController:_goalMonthTableViewController animated:NO];
-    [controller pushViewController:_goalCreationViewController animated:NO];
     self.window.rootViewController = controller;
-    
+    [controller pushViewController:_mainTabBarViewController animated:NO];
+        
     User *user = [User currentUser];
     if (user == nil) {
         [self _displayLoginViewController];
     } else {
-       // _goalMonthTableViewController.user = user;
+        _goalMonthTableViewController.user = user;
     }
-    
+        
     return YES;
 }
 
