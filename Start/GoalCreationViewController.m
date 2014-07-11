@@ -22,8 +22,12 @@
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        self.title = @"First Tab";
-        self.tabBarItem.image = [UIImage imageNamed:@"first.png"];
+        
+        UIImage *starImage = [UIImage imageNamed:@"first.png"];
+        
+        starImage = [starImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+        self.tabBarItem = [self.tabBarItem initWithTitle:@"First Tab" image:starImage selectedImage:starImage];
+
     }
     return self;
 }

@@ -9,6 +9,7 @@
 /* Begin PBXBuildFile section */
 		577F4426196F362B00FC1484 /* MainTabBarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 577F4425196F362B00FC1484 /* MainTabBarViewController.m */; };
 		577F4428196F421500FC1484 /* Default-568h@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = 577F4427196F421500FC1484 /* Default-568h@2x.png */; };
+		577F442A196FAA1400FC1484 /* first.png in Resources */ = {isa = PBXBuildFile; fileRef = 577F4429196FAA1400FC1484 /* first.png */; };
 		577F649F196C7DEC00DB0FF6 /* GoalCreationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 577F649E196C7DEC00DB0FF6 /* GoalCreationViewController.m */; };
 		5789CC6B19647FDE0084BA6B /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5789CC6A19647FDE0084BA6B /* Foundation.framework */; };
 		5789CC6D19647FDE0084BA6B /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 5789CC6C19647FDE0084BA6B /* CoreGraphics.framework */; };
@@ -55,6 +56,7 @@
 		577F4424196F362B00FC1484 /* MainTabBarViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = MainTabBarViewController.h; sourceTree = "<group>"; };
 		577F4425196F362B00FC1484 /* MainTabBarViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = MainTabBarViewController.m; sourceTree = "<group>"; };
 		577F4427196F421500FC1484 /* Default-568h@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "Default-568h@2x.png"; sourceTree = "<group>"; };
+		577F4429196FAA1400FC1484 /* first.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = first.png; path = ../../../Downloads/first.png; sourceTree = "<group>"; };
 		577F649D196C7DEC00DB0FF6 /* GoalCreationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = GoalCreationViewController.h; sourceTree = "<group>"; };
 		577F649E196C7DEC00DB0FF6 /* GoalCreationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = GoalCreationViewController.m; sourceTree = "<group>"; };
 		5789CC6719647FDE0084BA6B /* Start.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Start.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -136,6 +138,7 @@
 		5789CC5E19647FDE0084BA6B = {
 			isa = PBXGroup;
 			children = (
+				577F4429196FAA1400FC1484 /* first.png */,
 				577F4427196F421500FC1484 /* Default-568h@2x.png */,
 				5789CC7019647FDE0084BA6B /* Start */,
 				5789CC8919647FDE0084BA6B /* StartTests */,
@@ -306,6 +309,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				577F442A196FAA1400FC1484 /* first.png in Resources */,
 				5789CC7519647FDE0084BA6B /* InfoPlist.strings in Resources */,
 				5789CC7D19647FDE0084BA6B /* Images.xcassets in Resources */,
 				577F4428196F421500FC1484 /* Default-568h@2x.png in Resources */,

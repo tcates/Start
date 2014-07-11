@@ -69,6 +69,12 @@
     NSArray *goalControllers = [NSArray arrayWithObjects:_goalCreationViewController, _goalMonthTableViewController, nil];
     _mainTabBarViewController.viewControllers = goalControllers;
     
+    
+    //UIImage *starImage = [UIImage imageNamed:@"first.png"];
+    
+    //starImage = [starImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    //_mainTabBarViewController.tabBarItem = [[[_mainTabBarViewController.viewControllers objectAtIndex:0] tabBarItem] initWithTitle:@"First Tab" image:starImage selectedImage:starImage];
+    
     //[controller pushViewController:_goalMonthTableViewController animated:NO];
     self.window.rootViewController = controller;
     [controller pushViewController:_mainTabBarViewController animated:NO];
