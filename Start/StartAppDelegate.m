@@ -78,7 +78,7 @@
     //[controller pushViewController:_goalMonthTableViewController animated:NO];
     self.window.rootViewController = controller;
     [controller pushViewController:_mainTabBarViewController animated:NO];
-        
+    
     User *user = [User currentUser];
     if (user == nil) {
         [self _displayLoginViewController];
