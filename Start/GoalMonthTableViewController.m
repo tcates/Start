@@ -30,7 +30,7 @@
         UIImage *starImage = [UIImage imageNamed:@"first.png"];
         
         starImage = [starImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        self.tabBarItem = [self.tabBarItem initWithTitle:@"Second Tab" image:starImage selectedImage:starImage];
+        self.tabBarItem = [self.tabBarItem initWithTitle:@"View Goals" image:starImage selectedImage:starImage];
     }
     return self;
 }

@@ -26,7 +26,7 @@
         UIImage *starImage = [UIImage imageNamed:@"first.png"];
         
         starImage = [starImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
-        self.tabBarItem = [self.tabBarItem initWithTitle:@"First Tab" image:starImage selectedImage:starImage];
+        self.tabBarItem = [self.tabBarItem initWithTitle:@"New Goal" image:starImage selectedImage:starImage];
 
     }
     return self;
