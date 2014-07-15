@@ -57,6 +57,7 @@
     self.window.backgroundColor = [UIColor whiteColor];
     [self.window makeKeyAndVisible];
     
+    
     [self _parseInit];
     [PFAnalytics trackAppOpenedWithLaunchOptions:launchOptions];
     
@@ -78,7 +79,9 @@
     //[controller pushViewController:_goalMonthTableViewController animated:NO];
     self.window.rootViewController = controller;
     [controller pushViewController:_mainTabBarViewController animated:NO];
-        
+    
+    //[PFUser logOut];
+    
     User *user = [User currentUser];
     if (user == nil) {
         [self _displayLoginViewController];
