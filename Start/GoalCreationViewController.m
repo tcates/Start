@@ -16,7 +16,9 @@
 @end
 
 @implementation GoalCreationViewController {
-    UITextField *_goal;
+    MultiPlaceholderTextField *_goal;
+    MultiPlaceholderTextField *_category;
+    MultiPlaceholderTextField *_unit;
 }
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -49,21 +51,18 @@
     [super viewDidLoad];
     
     UILabel *categoryLabel = [self _newLabelWithString:@"What area in your life would you like to focus on?"];
-    MultiPlaceholderTextField *category = [[MultiPlaceholderTextField alloc] initWithPlaceholders:@[@"mind", @"body", @"spirit"]];
-    category.tag = 1;
-    [self.view addSubview:category];
+    _category = [[MultiPlaceholderTextField alloc] initWithPlaceholders:@[@"mind", @"body", @"spirit"]];
+    [self.view addSubview:_category];
     
     UILabel *goalLabel = [self _newLabelWithString:@"What will you do everyday to better that area of life?"];
-    MultiPlaceholderTextField *goal = [[MultiPlaceholderTextField alloc] initWithPlaceholders:@[@"read", @"exercise", @"journal"]];
-    goal.tag = 2;
-    [self.view addSubview:goal];
+    _goal = [[MultiPlaceholderTextField alloc] initWithPlaceholders:@[@"read", @"exercise", @"journal"]];
+    [self.view addSubview:_goal];
     
     UILabel *unitLabel = [self _newLabelWithString:@"Is this goal measureable? What is it measured by?"];
-    MultiPlaceholderTextField *unit = [[MultiPlaceholderTextField alloc] initWithPlaceholders:@[@"pages", @"miles", @"words"]];
-    unit.tag = 3;
-    [self.view addSubview:unit];
+    _unit = [[MultiPlaceholderTextField alloc] initWithPlaceholders:@[@"pages", @"miles", @"words"]];
+    [self.view addSubview:_unit];
     
-    NSDictionary *views = NSDictionaryOfVariableBindings(categoryLabel, category, goalLabel, goal, unitLabel, unit);
+    NSDictionary *views = NSDictionaryOfVariableBindings(categoryLabel, _category, goalLabel, _goal, unitLabel, _unit);
     NSDictionary *metrics = @{
                               @"topPadding": @(10.0),
                               @"lPadding": @(10.0),
@@ -74,7 +73,7 @@
                                                                           options:0
                                                                           metrics:metrics
                                                                             views:views]];
-    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(topPadding)-[categoryLabel]-[category]-[goalLabel]-[goal]-[unitLabel]-[unit]"
+    [self.view addConstraints:[NSLayoutConstraint constraintsWithVisualFormat:@"V:|-(topPadding)-[categoryLabel]-[_category]-[goalLabel]-[_goal]-[unitLabel]-[_unit]"
                                                                           options:NSLayoutFormatAlignAllLeading | NSLayoutFormatAlignAllTrailing
                                                                           metrics:metrics
                                                                             views:views]];
@@ -94,19 +93,15 @@
     NSLog(@"done button pressed");
     
     Goal *newGoal = [Goal object];
-
-    MultiPlaceholderTextField *textField = (MultiPlaceholderTextField *)[self.view viewWithTag:1];
     
-    NSLog(@"category:%@\n", textField.textField.text);
-    newGoal.categoryId = textField.textField.text;
+    NSLog(@"category:%@\n", _category.textField.text);
+    newGoal.categoryId = _category.textField.text;
     
-    textField = (MultiPlaceholderTextField *)[self.view viewWithTag:2];
-    NSLog(@"goal:%@\n", textField.textField.text);
-    newGoal.title = textField.textField.text;
+    NSLog(@"goal:%@\n", _goal.textField.text);
+    newGoal.title = _goal.textField.text;
     
-    textField = (MultiPlaceholderTextField *)[self.view viewWithTag:3];
-    NSLog(@"units:%@\n", textField.textField.text);
-    newGoal.customUnits = textField.textField.text;
+    NSLog(@"units:%@\n", _unit.textField.text);
+    newGoal.customUnits = _unit.textField.text;
     [newGoal saveInBackground];
 }
 
