@@ -8,6 +8,7 @@
 
 #import "GoalCreationViewController.h"
 #import <QuartzCore/QuartzCore.h>
+#import "Goal.h"
 
 @interface MultiPlaceholderTextField : UIView
 - (instancetype)initWithPlaceholders:(NSArray *)/* NSString */ placeholders;
@@ -49,14 +50,17 @@
     
     UILabel *categoryLabel = [self _newLabelWithString:@"What area in your life would you like to focus on?"];
     MultiPlaceholderTextField *category = [[MultiPlaceholderTextField alloc] initWithPlaceholders:@[@"mind", @"body", @"spirit"]];
+    category.tag = 1;
     [self.view addSubview:category];
     
     UILabel *goalLabel = [self _newLabelWithString:@"What will you do everyday to better that area of life?"];
     MultiPlaceholderTextField *goal = [[MultiPlaceholderTextField alloc] initWithPlaceholders:@[@"read", @"exercise", @"journal"]];
+    goal.tag = 2;
     [self.view addSubview:goal];
     
     UILabel *unitLabel = [self _newLabelWithString:@"Is this goal measureable? What is it measured by?"];
     MultiPlaceholderTextField *unit = [[MultiPlaceholderTextField alloc] initWithPlaceholders:@[@"pages", @"miles", @"words"]];
+    unit.tag = 3;
     [self.view addSubview:unit];
     
     NSDictionary *views = NSDictionaryOfVariableBindings(categoryLabel, category, goalLabel, goal, unitLabel, unit);
@@ -88,6 +92,22 @@
 - (void)_doneButtonPressed
 {
     NSLog(@"done button pressed");
+    
+    Goal *newGoal = [Goal object];
+
+    MultiPlaceholderTextField *textField = (MultiPlaceholderTextField *)[self.view viewWithTag:1];
+    
+    NSLog(@"category:%@\n", textField.textField.text);
+    newGoal.categoryId = textField.textField.text;
+    
+    textField = (MultiPlaceholderTextField *)[self.view viewWithTag:2];
+    NSLog(@"goal:%@\n", textField.textField.text);
+    newGoal.title = textField.textField.text;
+    
+    textField = (MultiPlaceholderTextField *)[self.view viewWithTag:3];
+    NSLog(@"units:%@\n", textField.textField.text);
+    newGoal.customUnits = textField.textField.text;
+    [newGoal saveInBackground];
 }
 
 - (void)touchesBegan:(NSSet *)touches withEvent:(UIEvent *)event{
